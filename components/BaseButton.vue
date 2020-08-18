@@ -1,30 +1,38 @@
 <template>
   <button
+    v-if="!to"
     class="btn"
-    :class="clr"
-    :style="{
-      width: isFull ? '100%' : 'auto',
-    }"
-    @click="onClick"
+    :class="isTxt ? 'isTxt' : ''"
+    :disabled="disabled"
+    @click="$emit('click')"
   >
     <slot />
   </button>
+  <nuxt-link
+    v-else
+    :to="to"
+    class="btn"
+    :class="{
+      isDisabled: disabled,
+      isTxt,
+    }"
+  >
+    <slot />
+  </nuxt-link>
 </template>
 
 <script>
 export default {
   props: {
-    clr: {
+    to: {
       type: String,
       default: '',
     },
-    isFull: {
+    disabled: {
       type: Boolean,
     },
-  },
-  methods: {
-    onClick() {
-      this.$emit('myclick')
+    isTxt: {
+      type: Boolean,
     },
   },
 }
@@ -32,24 +40,33 @@ export default {
 
 <style lang="scss" scoped>
 .btn {
+  text-decoration: none;
+  display: block;
+  text-align: center;
   cursor: pointer;
   border: none;
-  background: #35495e;
+  background: rgba(0, 0, 0, 0.6);
   color: #fff;
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: bold;
-  padding: 0 2rem;
-  height: 4rem;
-  line-height: 4rem;
-  border-radius: 2rem;
+  padding: 0;
+  width: 100%;
+  height: 3.75rem;
+  line-height: 3.75rem;
+  border-radius: 4px;
   &:hover {
-    background: darken(#35495e, 5%);
+    background: rgba(0, 0, 0, 1);
   }
-  &.red {
-    background: #b70f0f;
-    &:hover {
-      background: darken(#b70f0f, 5%);
-    }
+  & + & {
+    margin-top: 0.75rem;
+  }
+  &:disabled,
+  &.isDisabled {
+    opacity: 0.3;
+  }
+  &.isTxt {
+    background: transparent;
+    color: rgba($color: #fff, $alpha: 0.7);
   }
 }
 </style>

@@ -1,59 +1,40 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">hanly</h1>
-      <h2 class="subtitle">こっちにも「{{ txt }}」</h2>
-      <div class="links">
-        <nuxt-link to="/test" class="button--green">テストページへ</nuxt-link>
-      </div>
+  <div>
+    <div class="imgWrap">
+      <img
+        class="img"
+        src="https://res.cloudinary.com/kiyopikko/image/upload/v1561802660/hanly-splash_ushtah.png"
+        alt
+        :width="178"
+      />
+    </div>
+    <div class="buttons">
+      <BaseButton to="/signin">ログイン</BaseButton>
+      <BaseButton to="/signup">新規登録</BaseButton>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import Logo from '~/components/Logo.vue'
-
-export default {
-  components: {
-    Logo,
-  },
-  computed: {
-    ...mapGetters('test', ['txt']),
-  },
-}
+export default {}
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
+.imgWrap {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  text-align: center;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 10.25rem);
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+.buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
 }
 </style>
