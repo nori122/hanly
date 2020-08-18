@@ -34,7 +34,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [],
+  plugins: ['~/plugins/geolocation', '~/plugins/dayjs'],
   /*
    ** Auto import components
    ** コンポーネントに書いてある内容はimportしなくても勝手にやってくれる！
