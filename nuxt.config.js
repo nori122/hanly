@@ -29,7 +29,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['ress', '~/assets/css/foundation.scss'],
+  css: ['ress', 'leaflet/dist/leaflet.css', '~/assets/css/foundation.scss'],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
@@ -68,4 +68,8 @@ export default {
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {},
+  server: {
+    port: 3000,
+    host: '0.0.0.0',
+  },
 }
